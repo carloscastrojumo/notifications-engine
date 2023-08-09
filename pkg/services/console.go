@@ -3,7 +3,7 @@ package services
 import (
 	"io"
 
-	"github.com/argoproj/notifications-engine/pkg/util/misc"
+	"github.com/carloscastro/notifications-engine/pkg/util/misc"
 )
 
 type consoleService struct {

@@ -12,7 +12,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"sigs.k8s.io/yaml"
 
-	httputil "github.com/argoproj/notifications-engine/pkg/util/http"
+	httputil "github.com/carloscastro/notifications-engine/pkg/util/http"
 )
 
 type GoogleChatNotification struct {

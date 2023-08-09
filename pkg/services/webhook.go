@@ -10,8 +10,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	httputil "github.com/argoproj/notifications-engine/pkg/util/http"
-	"github.com/argoproj/notifications-engine/pkg/util/text"
+	httputil "github.com/carloscastro/notifications-engine/pkg/util/http"
+	"github.com/carloscastro/notifications-engine/pkg/util/text"
 )
 
 type WebhookNotification struct {

@@ -109,7 +109,7 @@ func (n *Notification) GetTemplater(name string, f texttemplate.FuncMap) (Templa
 	return n.getTemplater(name, f, sources)
 }
 
-//go:generate mockgen -destination=./mocks/mocks.go -package=mocks github.com/argoproj/notifications-engine/pkg/services NotificationService
+//go:generate mockgen -destination=./mocks/mocks.go -package=mocks github.com/carloscastro/notifications-engine/pkg/services NotificationService
 
 // NotificationService defines notification service interface
 type NotificationService interface {

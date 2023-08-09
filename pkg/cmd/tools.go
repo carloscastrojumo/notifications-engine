@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/argoproj/notifications-engine/pkg/api"
+	"github.com/carloscastro/notifications-engine/pkg/api"
 
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"

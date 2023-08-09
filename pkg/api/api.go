@@ -3,9 +3,9 @@ package api
 import (
 	"fmt"
 
-	"github.com/argoproj/notifications-engine/pkg/services"
-	"github.com/argoproj/notifications-engine/pkg/templates"
-	"github.com/argoproj/notifications-engine/pkg/triggers"
+	"github.com/carloscastro/notifications-engine/pkg/services"
+	"github.com/carloscastro/notifications-engine/pkg/templates"
+	"github.com/carloscastro/notifications-engine/pkg/triggers"
 )
 
 const (
@@ -13,7 +13,7 @@ const (
 	recipientVarName   = "recipient"
 )
 
-//go:generate mockgen -destination=../mocks/api.go -package=mocks github.com/argoproj/notifications-engine/pkg/api API
+//go:generate mockgen -destination=../mocks/api.go -package=mocks github.com/carloscastro/notifications-engine/pkg/api API
 
 type GetVars func(obj map[string]interface{}, dest services.Destination) map[string]interface{}
 

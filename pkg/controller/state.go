@@ -8,9 +8,9 @@ import (
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"github.com/argoproj/notifications-engine/pkg/services"
-	"github.com/argoproj/notifications-engine/pkg/subscriptions"
-	"github.com/argoproj/notifications-engine/pkg/triggers"
+	"github.com/carloscastro/notifications-engine/pkg/services"
+	"github.com/carloscastro/notifications-engine/pkg/subscriptions"
+	"github.com/carloscastro/notifications-engine/pkg/triggers"
 )
 
 const (

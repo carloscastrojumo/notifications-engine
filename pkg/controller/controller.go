@@ -18,9 +18,9 @@ import (
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/client-go/util/workqueue"
 
-	"github.com/argoproj/notifications-engine/pkg/api"
-	"github.com/argoproj/notifications-engine/pkg/services"
-	"github.com/argoproj/notifications-engine/pkg/subscriptions"
+	"github.com/carloscastro/notifications-engine/pkg/api"
+	"github.com/carloscastro/notifications-engine/pkg/services"
+	"github.com/carloscastro/notifications-engine/pkg/subscriptions"
 )
 
 // NotificationDelivery represents a notification that was delivered

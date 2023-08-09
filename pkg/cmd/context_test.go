@@ -8,7 +8,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/argoproj/notifications-engine/pkg/api"
+	"github.com/carloscastro/notifications-engine/pkg/api"
 )
 
 var secretYaml = `apiVersion: v1

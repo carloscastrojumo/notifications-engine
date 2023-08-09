@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/argoproj/notifications-engine/pkg/util/misc"
+	"github.com/carloscastro/notifications-engine/pkg/util/misc"
 
 	"github.com/stretchr/testify/assert"
 )
