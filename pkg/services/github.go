@@ -53,6 +53,7 @@ type GitHubDeployment struct {
 	LogURL           string   `json:"logURL,omitempty"`
 	RequiredContexts []string `json:"requiredContexts"`
 	AutoMerge        bool     `json:"autoMerge,omitempty"`
+	Reference        string   `json:"reference,omitempty"`
 }
 
 const (
@@ -192,6 +193,7 @@ func (g *GitHubNotification) GetTemplater(name string, f texttemplate.FuncMap) (
 			}
 			notification.GitHub.Deployment.LogURL = logURLData.String()
 
+			notification.GitHub.Deployment.Reference = g.Deployment.Reference
 			notification.GitHub.Deployment.AutoMerge = g.Deployment.AutoMerge
 			notification.GitHub.Deployment.RequiredContexts = g.Deployment.RequiredContexts
 		}
@@ -297,14 +299,22 @@ func (g gitHubService) Send(notification Notification, _ Destination) error {
 		u := strings.Split(fullNameByRepoURL(notification.GitHub.repoURL), "/")
 		// maximum is 140 characters
 		description := trunc(notification.Message, 140)
+
+		// if no reference is provided, use the revision
+		ref := notification.GitHub.Deployment.Reference
+		if ref == "" {
+			ref = notification.GitHub.revision
+		}
+
 		deployment, _, err := g.client.Repositories.CreateDeployment(
 			context.Background(),
 			u[0],
 			u[1],
 			&github.DeploymentRequest{
-				Ref:              &notification.GitHub.revision,
+				Ref:              &ref,
 				Environment:      &notification.GitHub.Deployment.Environment,
 				RequiredContexts: &notification.GitHub.Deployment.RequiredContexts,
+				AutoMerge:        &notification.GitHub.Deployment.AutoMerge,
 			},
 		)
 		if err != nil {
