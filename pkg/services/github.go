@@ -52,6 +52,7 @@ type GitHubDeployment struct {
 	EnvironmentURL   string   `json:"environmentURL,omitempty"`
 	LogURL           string   `json:"logURL,omitempty"`
 	RequiredContexts []string `json:"requiredContexts"`
+	AutoMerge        bool     `json:"autoMerge,omitempty"`
 }
 
 const (
@@ -191,6 +192,7 @@ func (g *GitHubNotification) GetTemplater(name string, f texttemplate.FuncMap) (
 			}
 			notification.GitHub.Deployment.LogURL = logURLData.String()
 
+			notification.GitHub.Deployment.AutoMerge = g.Deployment.AutoMerge
 			notification.GitHub.Deployment.RequiredContexts = g.Deployment.RequiredContexts
 		}
 
