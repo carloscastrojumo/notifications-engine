@@ -97,7 +97,7 @@ func (g *GitHubNotification) GetTemplater(name string, f texttemplate.FuncMap) (
 		}
 	}
 
-	var deploymentState, environment, environmentURL, logURL *texttemplate.Template
+	var deploymentState, environment, environmentURL, reference, logURL *texttemplate.Template
 	if g.Deployment != nil {
 		deploymentState, err = texttemplate.New(name).Funcs(f).Parse(g.Deployment.State)
 		if err != nil {
@@ -110,6 +110,11 @@ func (g *GitHubNotification) GetTemplater(name string, f texttemplate.FuncMap) (
 		}
 
 		environmentURL, err = texttemplate.New(name).Funcs(f).Parse(g.Deployment.EnvironmentURL)
+		if err != nil {
+			return nil, err
+		}
+
+		reference, err = texttemplate.New(name).Funcs(f).Parse(g.Deployment.Reference)
 		if err != nil {
 			return nil, err
 		}
@@ -193,7 +198,12 @@ func (g *GitHubNotification) GetTemplater(name string, f texttemplate.FuncMap) (
 			}
 			notification.GitHub.Deployment.LogURL = logURLData.String()
 
-			notification.GitHub.Deployment.Reference = g.Deployment.Reference
+			var referenceData bytes.Buffer
+			if err := reference.Execute(&referenceData, vars); err != nil {
+				return err
+			}
+			notification.GitHub.Deployment.Reference = referenceData.String()
+
 			notification.GitHub.Deployment.AutoMerge = g.Deployment.AutoMerge
 			notification.GitHub.Deployment.RequiredContexts = g.Deployment.RequiredContexts
 		}
